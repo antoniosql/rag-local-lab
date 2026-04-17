@@ -23,6 +23,7 @@ if (-not (Test-Path -LiteralPath $envFile) -and (Test-Path -LiteralPath $envExam
 }
 
 Import-DotEnv -Path $envFile
+$anythingLLMPort = Get-EnvValue -Name 'ANYTHINGLLM_PORT' -Default '3001'
 
 if ($Offline) {
     $bundle = Join-Path $RepoRoot 'offline/docker-images.tar'
@@ -69,7 +70,7 @@ Write-Host '     python -m venv .venv'
 Write-Host '     .\.venv\Scripts\Activate.ps1'
 Write-Host '     pip install -r requirements-local.txt'
 Write-Host '  2) Abrir AnythingLLM para la demo visual inicial:'
-Write-Host '     http://localhost:3001'
+Write-Host "     http://localhost:$anythingLLMPort"
 Write-Host '  3) Lanzar los notebooks o probar la CLI local:'
 Write-Host '     jupyter lab'
 Write-Host '     cd app'
