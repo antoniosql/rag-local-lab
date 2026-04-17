@@ -72,6 +72,7 @@ rm -rf "$REPO_ROOT"/.pytest_cache "$REPO_ROOT"/.mypy_cache 2>/dev/null || true
 
 if [[ "$REMOVE_IMAGES" -eq 1 ]]; then
   echo ">> Eliminando imágenes Docker del taller..."
+  docker image rm -f mintplexlabs/anythingllm:latest 2>/dev/null || true
   docker image rm -f busybox:1.36.1 2>/dev/null || true
   docker image rm -f ollama/ollama qdrant/qdrant 2>/dev/null || true
 fi
@@ -95,5 +96,5 @@ echo "Verificación recomendada:"
 echo "  docker ps -a | grep taller-rag-local || true"
 echo "  docker volume ls | grep taller-rag-local || true"
 if [[ "$REMOVE_IMAGES" -eq 1 ]]; then
-  echo "  docker images | egrep 'busybox|ollama/ollama|qdrant/qdrant' || true"
+  echo "  docker images | egrep 'mintplexlabs/anythingllm|busybox|ollama/ollama|qdrant/qdrant' || true"
 fi

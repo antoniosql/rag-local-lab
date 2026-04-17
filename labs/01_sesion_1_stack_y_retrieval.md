@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Entender y probar por separado los componentes básicos del sistema: `Ollama`, `Qdrant` y el procesamiento de documentos con `LangChain`.
+Abrir una demo local de RAG con `AnythingLLM` y despues entender por separado los componentes básicos del sistema: `Ollama`, `Qdrant` y el procesamiento de documentos con `LangChain`.
 
 ## Paso 1 — Preflight
 
@@ -38,7 +38,23 @@ source .venv/bin/activate
 pip install -r requirements-local.txt
 ```
 
-## Paso 6 — Leer los documentos
+## Paso 6 — Demo visual inicial
+
+Abrir:
+
+- `http://localhost:3001` por defecto
+- `http://localhost:6333/dashboard`
+
+Comprobad que `AnythingLLM` arranca usando el mismo `Ollama` y `Qdrant` del stack.
+
+Sugerencia:
+
+1. Crear un workspace.
+2. Subir un documento de `docs/`.
+3. Hacer una pregunta corta.
+4. Explicar que despues reconstruiremos ese flujo paso a paso en notebooks.
+
+## Paso 7 — Leer los documentos
 
 Revisad:
 
@@ -51,19 +67,19 @@ Antes de indexar, responded verbalmente:
 2. Qué documento responde mejor a preguntas de montaje.
 3. Qué preguntas no se podrían responder con estos documentos.
 
-## Paso 7 — Notebook de Ollama
+## Paso 8 — Notebook de Ollama
 
 Ejecutad:
 
 - `notebooks/00_ollama_y_embeddings.ipynb`
 
-## Paso 8 — Notebook de Qdrant
+## Paso 9 — Notebook de Qdrant
 
 Ejecutad:
 
 - `notebooks/01_qdrant_desde_cero.ipynb`
 
-## Paso 9 — Notebook de chunking
+## Paso 10 — Notebook de chunking
 
 Ejecutad:
 
@@ -73,6 +89,8 @@ Ejecutad:
 
 - [ ] `ollama` está arriba.
 - [ ] `qdrant` está arriba.
+- [ ] `anythingllm` está arriba.
+- [ ] La demo inicial responde.
 - [ ] Ollama responde para chat.
 - [ ] Ollama genera embeddings.
 - [ ] Qdrant acepta una colección y búsquedas vectoriales.

@@ -1,25 +1,32 @@
-# Taller RAG Local con Ollama, LangChain y Qdrant
+# Taller RAG Local con Ollama, Qdrant, AnythingLLM y LangChain
 
 Repositorio base para un taller de RAG local orientado a aula.
 
 La idea es trabajar con el menor número de capas posible:
 
-1. `Docker` solo para los servicios de infraestructura.
-2. `Jupyter` como entorno principal de aprendizaje.
-3. `LangChain`, `langchain-ollama` y `qdrant-client` como librerías del laboratorio.
-4. Todo el código explicativo dentro de los notebooks.
+1. `Docker` para los servicios compartidos y la demo visual.
+2. `AnythingLLM` como demostración inicial de un RAG local ya montado.
+3. `Jupyter` como entorno principal de aprendizaje.
+4. `LangChain`, `langchain-ollama` y `qdrant-client` como librerías del laboratorio.
+5. Todo el código explicativo dentro de los notebooks.
 
 ## Qué incluye este repositorio
 
 - `docker-compose.yml` con:
   - `ollama`
   - `qdrant`
+  - `anythingllm`
 - `notebooks/` con el recorrido didáctico completo.
 - `docs/` con los documentos de ejemplo.
 - `evaluation/questions.csv` con preguntas para probar el RAG.
 - `scripts/` para arrancar, verificar y preparar el entorno.
 
 ## Filosofía del taller
+
+El taller tiene dos niveles complementarios:
+
+1. Empezar por una demo visual en `AnythingLLM` para enseñar lo que ya podemos hacer en local con RAG.
+2. Bajar luego al detalle técnico en notebooks para construir y entender cada pieza.
 
 El recorrido empieza por entender cada pieza por separado y solo después se monta el RAG:
 
@@ -59,7 +66,23 @@ docker compose up -d
 .\scripts\verify-stack.ps1
 ```
 
-### 3. Prepara Python local
+### 3. Demo inicial en AnythingLLM
+
+Abre:
+
+- `http://localhost:3001` por defecto
+- o `http://localhost:${ANYTHINGLLM_PORT}` si has cambiado el puerto en `.env`
+
+El servicio se arranca ya conectado al mismo `Ollama` y `Qdrant` del stack Docker.
+
+Sugerencia para la demo:
+
+1. Crear un workspace.
+2. Subir uno o dos documentos de `docs/`.
+3. Verificar que usa `Ollama` para chat y embeddings.
+4. Mostrar que los datos vectoriales quedan en `Qdrant`.
+
+### 4. Prepara Python local
 
 ```bash
 python -m venv .venv
@@ -92,6 +115,7 @@ jupyter lab
 | Ollama | `http://localhost:11434` | Chat y embeddings |
 | Qdrant REST | `http://localhost:6333` | API vectorial |
 | Qdrant Dashboard | `http://localhost:6333/dashboard` | Inspección manual |
+| AnythingLLM | `http://localhost:3001` por defecto | Demo visual del RAG local |
 
 ## Variables de entorno
 
@@ -108,6 +132,7 @@ CHUNK_OVERLAP=100
 TOP_K=3
 OLLAMA_PORT=11434
 QDRANT_PORT=6333
+ANYTHINGLLM_PORT=3001
 ```
 
 ## Comandos útiles
@@ -129,6 +154,7 @@ Ver logs:
 ```bash
 docker compose logs -f ollama
 docker compose logs -f qdrant
+docker compose logs -f anythingllm
 ```
 
 Descargar modelos:
@@ -175,6 +201,14 @@ Faltan modelos en Ollama:
 docker compose logs qdrant
 ```
 
+### AnythingLLM no responde
+
+```bash
+docker compose logs anythingllm
+```
+
+Comprueba tambien que el puerto configurado en `.env` no este ocupado.
+
 ### Los notebooks no conectan con Ollama
 
 Comprueba:
@@ -199,4 +233,4 @@ Revisa por este orden:
 
 ## Siguiente paso
 
-Levanta `ollama` y `qdrant`, instala dependencias locales y abre `notebooks/00_ollama_y_embeddings.ipynb`.
+Levanta el stack, abre el puerto definido en `ANYTHINGLLM_PORT` para la demo inicial y despues sigue con `notebooks/00_ollama_y_embeddings.ipynb`.

@@ -19,8 +19,9 @@ Conviene recordar al grupo que los scripts de `scripts/` tienen versión `bash` 
 
 ## Guion sugerido
 
-1. Probar `Ollama` por separado.
-2. Probar `Qdrant` con vectores manuales.
-3. Hacer chunking con `LangChain`.
-4. Indexar en `Qdrant`.
-5. Montar el RAG final y discutir qué falla cuando la respuesta es mala.
+1. Empezar con `AnythingLLM` como demo de RAG local ya funcionando.
+2. Probar `Ollama` por separado.
+3. Probar `Qdrant` con vectores manuales.
+4. Hacer chunking con `LangChain`.
+5. Indexar en `Qdrant`.
+6. Montar el RAG final y discutir qué falla cuando la respuesta es mala.
