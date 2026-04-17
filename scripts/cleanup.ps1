@@ -38,7 +38,6 @@ Remove-Item -LiteralPath (Join-Path $RepoRoot '.mypy_cache') -Recurse -Force -Er
 
 if ($Full) {
     Write-Host '>> Eliminando imágenes Docker del taller...'
-    & docker image rm -f 'mintplexlabs/anythingllm:latest' 2>$null
     & docker image rm -f 'busybox:1.36.1' 2>$null
     & docker image rm -f 'ollama/ollama' 'qdrant/qdrant' 2>$null
 }
@@ -66,5 +65,5 @@ Write-Host 'Verificación recomendada:'
 Write-Host "  docker ps -a | Select-String 'taller-rag-local'"
 Write-Host "  docker volume ls | Select-String 'taller-rag-local'"
 if ($Full) {
-    Write-Host "  docker images | Select-String 'mintplexlabs/anythingllm|busybox|ollama/ollama|qdrant/qdrant'"
+    Write-Host "  docker images | Select-String 'busybox|ollama/ollama|qdrant/qdrant'"
 }

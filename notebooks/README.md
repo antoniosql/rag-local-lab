@@ -1,20 +1,26 @@
 # Notebooks del taller
 
-Estos notebooks son ahora el camino principal del workshop.
+Estos notebooks son el camino principal del repositorio.
 
-La idea es que el alumnado explore el sistema desde Python local, no desde un contenedor de aplicación.
+La secuencia está pensada para enseñar cada componente por separado antes de montar el RAG completo.
 
 ## Orden recomendado
 
-1. `00_entender_arquitectura.ipynb`
-2. `01_laboratorio_chunking.ipynb`
-3. `02_laboratorio_embeddings_qdrant.ipynb`
-4. `03_laboratorio_retrieval_y_rag.ipynb`
-5. `04_laboratorio_evaluacion.ipynb`
+1. `00_ollama_y_embeddings.ipynb`
+2. `01_qdrant_desde_cero.ipynb`
+3. `02_langchain_chunking.ipynb`
+4. `03_indexacion_en_qdrant.ipynb`
+5. `04_rag_con_langchain.ipynb`
+
+## Idea de cada notebook
+
+- `00`: probar Ollama para chat y embeddings.
+- `01`: crear, poblar y consultar una colección en Qdrant sin pipeline.
+- `02`: cargar documentos y partirlos con LangChain.
+- `03`: generar embeddings e indexar chunks en Qdrant.
+- `04`: hacer retrieval, construir contexto y generar respuesta final.
 
 ## Preparación
-
-Antes de abrir Jupyter:
 
 ```bash
 docker compose up -d
@@ -27,13 +33,7 @@ jupyter lab
 
 ## Enfoque didáctico
 
-- Los notebooks usan Python local.
+- Todo el código está dentro de los notebooks.
+- No hay una capa de aplicacion intermedia, CLI ni API local.
 - La infraestructura vive en Docker.
-- LangChain se usa para hacer explícitos chunking, prompts y orquestación.
-- El alumnado debe inspeccionar variables intermedias y no tratar el pipeline como una caja negra.
-
-## Recomendación para el instructor
-
-- Empezar la sesión mostrando `AnythingLLM`.
-- Pasar a notebooks solo después de que el grupo tenga una imagen mental del sistema.
-- Validar cada checkpoint antes de pasar al siguiente notebook.
+- El alumnado debe inspeccionar valores intermedios en cada paso.

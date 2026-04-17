@@ -9,7 +9,6 @@ fi
 
 OLLAMA_PORT="${OLLAMA_PORT:-11434}"
 QDRANT_PORT="${QDRANT_PORT:-6333}"
-ANYTHINGLLM_PORT="${ANYTHINGLLM_PORT:-3001}"
 
 wait_for_url() {
   url="$1"
@@ -39,8 +38,5 @@ wait_for_url "http://localhost:${OLLAMA_PORT}/api/tags" "Ollama"
 
 echo "==> Comprobando Qdrant..."
 wait_for_url "http://localhost:${QDRANT_PORT}/collections" "Qdrant"
-
-echo "==> Comprobando AnythingLLM..."
-wait_for_url "http://localhost:${ANYTHINGLLM_PORT}" "AnythingLLM"
 
 echo "==> Stack verificado"

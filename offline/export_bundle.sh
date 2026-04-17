@@ -14,7 +14,6 @@ echo "==> Exportando imágenes Docker a ${OUT_FILE} ..."
 docker save -o "${OUT_FILE}" \
   ollama/ollama \
   qdrant/qdrant \
-  mintplexlabs/anythingllm:latest \
   "${HELPER_IMAGE}"
 
 echo "==> Bundle creado en ${OUT_FILE}"

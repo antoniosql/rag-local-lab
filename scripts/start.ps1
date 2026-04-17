@@ -23,7 +23,6 @@ if (-not (Test-Path -LiteralPath $envFile) -and (Test-Path -LiteralPath $envExam
 }
 
 Import-DotEnv -Path $envFile
-$anythingLLMPort = Get-EnvValue -Name 'ANYTHINGLLM_PORT' -Default '3001'
 
 if ($Offline) {
     $bundle = Join-Path $RepoRoot 'offline/docker-images.tar'
@@ -49,7 +48,7 @@ if ($Offline) {
     Invoke-Compose -RepoRoot $RepoRoot -Gpu:$Gpu -Args @('up', '-d', '--no-build')
 }
 else {
-    Write-Host '==> Levantando Ollama, Qdrant y AnythingLLM...'
+    Write-Host '==> Levantando Ollama y Qdrant...'
     Invoke-Compose -RepoRoot $RepoRoot -Gpu:$Gpu -Args @('up', '-d')
 
     if (-not $SkipPullModels) {
@@ -69,10 +68,5 @@ Write-Host '  1) Crear el entorno local de Python e instalar dependencias:'
 Write-Host '     python -m venv .venv'
 Write-Host '     .\.venv\Scripts\Activate.ps1'
 Write-Host '     pip install -r requirements-local.txt'
-Write-Host '  2) Abrir AnythingLLM para la demo visual inicial:'
-Write-Host "     http://localhost:$anythingLLMPort"
-Write-Host '  3) Lanzar los notebooks o probar la CLI local:'
+Write-Host '  2) Lanzar JupyterLab y seguir los notebooks:'
 Write-Host '     jupyter lab'
-Write-Host '     cd app'
-Write-Host '     python -m rag.ingest --docs-dir ../docs --force-recreate'
-Write-Host '     python -m rag.ask --question "¿Puedo devolver una mesa ya montada?"'

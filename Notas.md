@@ -1,19 +1,26 @@
 # Notas Instructor
 
-las instrucciones del README.md funcionan ok. solo mencionar que la ejecución de scripts depende de SO (bash o powershell) En la carpeta de scripts están ambas versiones. 
+Las instrucciones del `README.md` funcionan con el enfoque actual del taller.
 
-## Comandos docker
+Conviene recordar al grupo que los scripts de `scripts/` tienen versión `bash` y versión `PowerShell`.
 
-- docker compose build app --> construye la imagen (fichero dockerfile en directorio app) de la app
-- docker-compose up --> construye y despliega lo especificado en docker-compose.yml
-- docker-compose start: inicia los contenedores existentes en el archivo docker-compose.yml.
-- docker-compose stop: detiene los contenedores existentes en el archivo docker-compose.yml.
-- docker-compose restart: reinicia los contenedores existentes en el archivo docker-compose.yml.
-- docker-compose ps: muestra el estado de los contenedores definidos en el archivo docker-compose.yml.
-- docker-compose logs: muestra los logs de los contenedores definidos en el archivo docker-compose.yml.
-- dockers ps me permite ver los que están levantados
-- docker exec -it taller-rag-local-qdrant /bin/bash --> permite abrir un shell en el contenedor. Se sale con exit
+## Comandos Docker
 
-## QDRANT
+- `docker compose up -d` levanta `ollama` y `qdrant`.
+- `docker compose ps` muestra el estado del stack.
+- `docker compose logs ollama` y `docker compose logs qdrant` ayudan a diagnosticar problemas.
+- `docker exec -it taller-rag-local-qdrant /bin/bash` permite entrar en el contenedor si hace falta inspección manual.
 
-- http://localhost:6333/dashboard --> Web UI
+## Qdrant
+
+- `http://localhost:6333/dashboard` abre la interfaz web.
+- Es útil enseñar la colección tras ejecutar el notebook de indexación.
+- El alumnado debería comprobar `payload`, `chunk_id` y `source`.
+
+## Guion sugerido
+
+1. Probar `Ollama` por separado.
+2. Probar `Qdrant` con vectores manuales.
+3. Hacer chunking con `LangChain`.
+4. Indexar en `Qdrant`.
+5. Montar el RAG final y discutir qué falla cuando la respuesta es mala.
