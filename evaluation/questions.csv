@@ -1,0 +1,9 @@
+id,question,expected_source,should_abstain,notes
+Q1,"¿Puedo devolver una mesa ya montada si simplemente no me convence?",politica_devoluciones.md,false,"Debe responder que no por desistimiento simple."
+Q2,"¿Qué herramientas necesito para montar la mesa Oslo?",manual_mesa_oslo.md,false,"Debe mencionar llave Allen incluida y destornillador Phillips."
+Q3,"¿Cuánto tiempo tengo para comunicar un daño de transporte?",politica_devoluciones.md,false,"Debe responder 72 horas."
+Q4,"¿Puedo devolver un producto personalizado?",politica_devoluciones.md,false,"Debe matizar la excepción por defecto o daño."
+Q5,"¿Qué hago si faltan tornillos en la caja?",manual_mesa_oslo.md,false,"Debe indicar que no fuerce el montaje y abra incidencia."
+Q6,"¿Cuál es el plazo de entrega de la mesa Oslo?",,true,"No está en los documentos."
+Q7,"¿FrasoHome ofrece servicio de montaje a domicilio?",,true,"No está en los documentos."
+Q8,"¿Debo apretar totalmente los tornillos al principio?",manual_mesa_oslo.md,false,"Debe decir que no."
