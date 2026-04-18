@@ -40,30 +40,19 @@ El recorrido empieza por entender cada pieza por separado y solo después se mon
 
 ### 1. Verifica prerequisitos
 
-```bash
-./scripts/preflight.sh
-```
-
-En Windows PowerShell:
-
-```powershell
-.\scripts\preflight.ps1
+```text
+./scripts/preflight.sh   # bash
+.\scripts\preflight.ps1  # PowerShell
 ```
 
 ### 2. Levanta la infraestructura
 
-```bash
+```text
 docker compose up -d
-./scripts/pull-models.sh
-./scripts/verify-stack.sh
-```
-
-En PowerShell:
-
-```powershell
-docker compose up -d
-.\scripts\pull-models.ps1
-.\scripts\verify-stack.ps1
+./scripts/pull-models.sh      # bash
+.\scripts\pull-models.ps1     # PowerShell
+./scripts/verify-stack.sh     # bash
+.\scripts\verify-stack.ps1    # PowerShell
 ```
 
 ### 3. Demo inicial en AnythingLLM
@@ -84,18 +73,10 @@ Sugerencia para la demo:
 
 ### 4. Prepara Python local
 
-```bash
+```text
 python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements-local.txt
-jupyter lab
-```
-
-En PowerShell:
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+source .venv/bin/activate      # bash
+.\.venv\Scripts\Activate.ps1   # PowerShell
 pip install -r requirements-local.txt
 jupyter lab
 ```
@@ -121,6 +102,11 @@ jupyter lab
 
 Si no tienes `.env`, copia `.env.example`.
 
+```text
+cp .env.example .env           # bash
+Copy-Item .env.example .env    # PowerShell
+```
+
 Valores por defecto:
 
 ```env
@@ -139,19 +125,19 @@ ANYTHINGLLM_PORT=3001
 
 Levantar servicios:
 
-```bash
+```text
 docker compose up -d
 ```
 
 Ver estado:
 
-```bash
+```text
 docker compose ps
 ```
 
 Ver logs:
 
-```bash
+```text
 docker compose logs -f ollama
 docker compose logs -f qdrant
 docker compose logs -f anythingllm
@@ -159,14 +145,16 @@ docker compose logs -f anythingllm
 
 Descargar modelos:
 
-```bash
-./scripts/pull-models.sh
+```text
+./scripts/pull-models.sh   # bash
+.\scripts\pull-models.ps1  # PowerShell
 ```
 
 Verificar stack:
 
-```bash
-./scripts/verify-stack.sh
+```text
+./scripts/verify-stack.sh   # bash
+.\scripts\verify-stack.ps1  # PowerShell
 ```
 
 ## Estructura del repositorio
@@ -191,19 +179,20 @@ Verificar stack:
 
 Faltan modelos en Ollama:
 
-```bash
-./scripts/pull-models.sh
+```text
+./scripts/pull-models.sh   # bash
+.\scripts\pull-models.ps1  # PowerShell
 ```
 
 ### Qdrant no responde
 
-```bash
+```text
 docker compose logs qdrant
 ```
 
 ### AnythingLLM no responde
 
-```bash
+```text
 docker compose logs anythingllm
 ```
 
