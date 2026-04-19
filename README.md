@@ -45,6 +45,10 @@ El recorrido empieza por entender cada pieza por separado y solo después se mon
 .\scripts\preflight.ps1  # PowerShell
 ```
 
+Requisitos del alumnado:
+
+- [docs/requisitos_alumnos.md](/c:/Repos/rag-local-lab/docs/requisitos_alumnos.md)
+
 ### 2. Levanta la infraestructura
 
 ```text
@@ -78,6 +82,7 @@ python -m venv .venv
 source .venv/bin/activate      # bash
 .\.venv\Scripts\Activate.ps1   # PowerShell
 pip install -r requirements-local.txt
+code .
 jupyter lab
 ```
 

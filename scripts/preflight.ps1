@@ -16,6 +16,11 @@ Write-Host '==> Comprobando Docker Compose v2...'
 & docker compose version | Out-Null
 if ($LASTEXITCODE -ne 0) { throw 'Docker Compose v2 no está disponible' }
 
+Write-Host '==> Comprobando Visual Studio Code...'
+Assert-Command -Name 'code'
+& code --version | Out-Null
+if ($LASTEXITCODE -ne 0) { throw 'Visual Studio Code no está disponible desde terminal (comando code)' }
+
 Write-Host '==> Comprobando PowerShell...'
 Write-Host "PowerShell $($PSVersionTable.PSVersion)"
 
@@ -24,4 +29,4 @@ Assert-Command -Name 'python'
 & python --version | Out-Null
 if ($LASTEXITCODE -ne 0) { throw 'Python no está disponible' }
 
-Write-Host '==> Comprobación básica OK'
+Write-Host '==> Comprobación básica OK para Docker, VS Code y Python'

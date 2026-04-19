@@ -5,11 +5,22 @@ Las instrucciones del `README.md` funcionan con el enfoque actual del taller.
 Conviene recordar al grupo que los scripts de `scripts/` tienen versión `bash` y versión `PowerShell`.
 
 ## Comandos Docker
+Debemos de tener docker desktop ejecutándose, para poder lanzarlo. 
+Cuando lanzaoms el compose up, se genera el contenedor con las imágenes que tenemos definidas en el yaml
+Los cambios en las imágenes se guardan por lo que la siguiente vez que se levante tendrán las modificaciones hechas, si solo se detienen con down. 
 
-- `docker compose up -d` levanta `ollama` y `qdrant`.
+- `docker compose up -d` levanta `ollama`,  `qdrant` y `AnythingLLM`.
 - `docker compose ps` muestra el estado del stack.
-- `docker compose logs ollama` y `docker compose logs qdrant` ayudan a diagnosticar problemas.
+- `docker compose logs ollama` y `docker compose logs qdrant` por ejemplo ayudan a diagnosticar problemas.
 - `docker exec -it taller-rag-local-qdrant /bin/bash` permite entrar en el contenedor si hace falta inspección manual.
+
+## Ollama
+Lista de Modelos: https://ollama.com/library 
+Para descargar un modelo en Ollama, el nombre que necesitas sigue generalmente un formato de nombre-del-modelo:tag. Si no especificas un "tag" (la versión o tamaño), Ollama descargará por defecto la versión latest
+
+ollama pull gemma4:e4b 
+con ollama list veo la lista de modelos
+con ollama rm puedo eliminarlos
 
 ## Qdrant
 
