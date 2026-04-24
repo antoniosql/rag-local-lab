@@ -19,6 +19,7 @@ Lista de Modelos: https://ollama.com/library
 Para descargar un modelo en Ollama, el nombre que necesitas sigue generalmente un formato de nombre-del-modelo:tag. Si no especificas un "tag" (la versión o tamaño), Ollama descargará por defecto la versión latest
 
 ollama pull gemma4:e4b 
+ollama pull deepseek-r1:1.5b
 con ollama list veo la lista de modelos
 con ollama rm puedo eliminarlos
 
